@@ -1,0 +1,34 @@
+@model treino_mvc.Models.Video
+
+@{
+    ViewData["Title"] = "Cadastrar Video";
+}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2>Cadastrar novo Video</h2>
+        <section>
+            <div class="card-login">
+                <form class="form-horizontal" asp-controller="Video" asp-action="Salvar" method="POST">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <strong>Nome do video</strong>
+                        <input type="text" asp-for="Nome" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <strong>Link do Youtube</strong>
+                        <input type="text" asp-for="LinkVideo" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <strong>Descrição</strong>
+                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="button-curso">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>

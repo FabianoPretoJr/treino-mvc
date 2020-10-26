@@ -1,0 +1,30 @@
+@model treino_mvc.Models.Curso
+
+@{
+    ViewData["Title"] = "Cadastrar Curso";
+}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2>Cadastrar novo curso</h2>
+        <section>
+            <div class="card-login">
+                <form class="form-horizontal" asp-controller="Curso" asp-action="Salvar" method="POST">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <strong>Nome do curso</strong>
+                        <input type="text" asp-for="Nome" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <strong>Descrição</strong>
+                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="button-curso">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>

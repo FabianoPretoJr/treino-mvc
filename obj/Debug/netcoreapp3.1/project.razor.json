@@ -14392,6 +14392,11 @@
   "RootNamespace": "treino_mvc",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Curso\\Index.cshtml",
+      "TargetPath": "Views\\Curso\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -14409,6 +14414,16 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Curso\\CadastrarCurso.cshtml",
+      "TargetPath": "Views\\Curso\\CadastrarCurso.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Video\\Index.cshtml",
+      "TargetPath": "Views\\Video\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14444,6 +14459,11 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Video\\CadastrarVideo.cshtml",
+      "TargetPath": "Views\\Video\\CadastrarVideo.cshtml",
       "FileKind": "mvc"
     },
     {
