@@ -8,8 +8,8 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <section>
-            <a href="/Curso/CadastrarCurso" class="btn btn-primary">Cadastrar Novo Curso</a>
-            <h2>Cursos cadastrados</h2>
+            <br/><a href="/Curso/CadastrarCurso" class="btn btn-primary">Cadastrar Novo Curso</a><br/><br/>
+            <h2>Cursos cadastrados</h2><br/>
             @foreach (var curso in Model)
             {
                 <div class="card-login">
@@ -23,6 +23,7 @@
                         <a href="/Video/@curso.Id" class="btn btn-success">Adicionar Video</a>
                     </div>
                 </div>
+                <br/>
             }
         </section>
     </div>

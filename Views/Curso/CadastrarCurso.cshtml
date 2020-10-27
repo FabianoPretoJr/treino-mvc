@@ -1,4 +1,4 @@
-@model treino_mvc.Models.Curso
+@model treino_mvc.DTO.CursoDTO;
 
 @{
     ViewData["Title"] = "Cadastrar Curso";
@@ -10,18 +10,24 @@
         <section>
             <div class="card-login">
                 <form class="form-horizontal" asp-controller="Curso" asp-action="Salvar" method="POST">
-                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Id" value="@ViewData["aux"]"/>
+
                     <div class="form-group">
-                        <strong>Nome do curso</strong>
-                        <input type="text" asp-for="Nome" class="form-control" />
+                        <label asp-for="Nome">Nome</label>
+                        <input type="text" asp-for="Nome" class="form-control" placeholder="Trabalhando com Entity Framework" />
+                        <span asp-validation-for="Nome"></span><br/>
                     </div>
+
                     <div class="form-group">
-                        <strong>Descrição</strong>
-                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50"></textarea>
+                        <label asp-for="Descricao">Descrição</label>
+                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50" placeholder="Framework para fazer mapeamento de banco de dados"></textarea>
+                        <span asp-validation-for="Descricao"></span>
                     </div>
+
                     <div class="form-group">
                         <button type="submit" class="button-curso">Cadastrar</button>
                     </div>
+
                 </form>
             </div>
         </section>

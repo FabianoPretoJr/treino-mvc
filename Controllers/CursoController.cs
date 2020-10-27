@@ -9,6 +9,7 @@ using treino_mvc.Models;
 using treino_mvc.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using treino_mvc.DTO;
 
 namespace treino_mvc.Controllers
 {
@@ -32,27 +33,41 @@ namespace treino_mvc.Controllers
         [Authorize(Policy = "Cargo")]
         public IActionResult CadastrarCurso()
         {
+            ViewData["aux"] = 0;
             return View();
         }
 
         [Authorize(Policy = "Cargo")]
         [HttpPost]
-        public IActionResult Salvar(Curso curso)
+        public IActionResult Salvar(CursoDTO cursoTemporario)
         {
-            if (curso.Id == 0)
+            if (ModelState.IsValid)
             {
-                database.Curso.Add(curso);
+                Curso curso = new Curso();
+
+                if (cursoTemporario.Id == 0)
+                {
+                    curso.Nome = cursoTemporario.Nome;
+                    curso.Descricao = cursoTemporario.Descricao;
+
+                    database.Curso.Add(curso);
+                }
+                else
+                {
+                    Curso cursoDoBanco = database.Curso.First(registro => registro.Id == cursoTemporario.Id);
+
+                    cursoDoBanco.Nome = cursoTemporario.Nome;
+                    cursoDoBanco.Descricao = cursoTemporario.Descricao;
+                }
+
+                database.SaveChanges();
+                return RedirectToAction("Index");
             }
             else
             {
-                Curso cursoDoBanco = database.Curso.First(registro => registro.Id == curso.Id);
-
-                cursoDoBanco.Nome = curso.Nome;
-                cursoDoBanco.Descricao = curso.Descricao;
+                ViewData["aux"] = 0;
+                return View("../Curso/CadastrarCurso");
             }
-
-            database.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         public IActionResult ExibirCursos()
@@ -63,7 +78,15 @@ namespace treino_mvc.Controllers
         public IActionResult Editar(int id)
         {
             Curso curso = database.Curso.First(registro => registro.Id == id);
-            return View("CadastrarCurso", curso);
+            CursoDTO cursoTemporario = new CursoDTO();
+
+            cursoTemporario.Id = curso.Id;
+            cursoTemporario.Nome = curso.Nome;
+            cursoTemporario.Descricao = curso.Descricao;
+
+            ViewData["aux"] = id;
+
+            return View("CadastrarCurso", cursoTemporario);
         }
 
         public IActionResult Excluir(int id)
