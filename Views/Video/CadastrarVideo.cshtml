@@ -1,4 +1,4 @@
-@model treino_mvc.Models.Video
+@model treino_mvc.DTO.VideoDTO;
 
 @{
     ViewData["Title"] = "Cadastrar Video";
@@ -10,20 +10,29 @@
         <section>
             <div class="card-login">
                 <form class="form-horizontal" asp-controller="Video" asp-action="Salvar" method="POST">
-                    <input type="text" value="@ViewData["idCursoVideo"]"/>
-                    <input type="text" asp-for="Id"/> <!-- o Id está absorvendo o valor do idCursoVideo-->
+
+                    <input type="hidden" asp-for="Id" value="@ViewData["aux1"]"/>
+
                     <div class="form-group">
-                        <strong>Nome do video</strong>
-                        <input type="text" asp-for="Nome" class="form-control" />
+                        <label asp-for="Nome">Nome</label>
+                        <input type="text" asp-for="Nome" class="form-control" placeholder="Aula 1" />
+                        <span asp-validation-for="Nome"></span><br/>
                     </div>
+                    
                     <div class="form-group">
-                        <strong>Link do Youtube</strong>
-                        <input type="text" asp-for="LinkVideo" class="form-control" />
+                        <label asp-for="LinkVideo"></label>
+                        <input type="text" asp-for="LinkVideo" class="form-control" placeholder="youtube.com.br/" />
+                        <span asp-validation-for="LinkVideo"></span>
                     </div>
+
                     <div class="form-group">
-                        <strong>Descrição</strong>
-                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50"></textarea>
+                        <label asp-for="Descricao"></label>
+                        <textarea asp-for="Descricao" class="form-control" rows="5" cols="50" placeholder="Nessa aula falaremos como configurar..."></textarea>
+                        <span asp-validation-for="Descricao"></span>
                     </div>
+                  
+                    <input type="hidden" asp-for="CursoID" value="@ViewData["idCursoVideo"]"/>
+
                     <div class="form-group">
                         <button type="submit" class="button-curso">Cadastrar</button>
                     </div>

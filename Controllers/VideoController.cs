@@ -10,6 +10,7 @@ using treino_mvc.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using treino_mvc.DTO;
 
 namespace treino_mvc.Controllers 
 {
@@ -38,34 +39,42 @@ namespace treino_mvc.Controllers
         public IActionResult CadastrarVideo(int id)
         {
             ViewData["idCursoVideo"] = id;
+            ViewData["aux1"] = 0;
             return View();
         }
 
         [Authorize(Policy = "Cargo")]
         [HttpPost]
-        public IActionResult Salvar(Video video, Curso curso)
+        public IActionResult Salvar(VideoDTO videoTemporario)
         {
-            if (video.Id == 0)
+            if (ModelState.IsValid)
             {
-                video.Nome = video.Nome;
-                video.LinkVideo = video.LinkVideo;
-                video.Descricao = video.Descricao;
-                video.Curso = database.Curso.First(c => c.Id == curso.Id);
-                database.Add(video);
+                Video video = new Video();
+
+                if (videoTemporario.Id == 0)
+                {
+                    video.Nome = videoTemporario.Nome;
+                    video.LinkVideo = videoTemporario.LinkVideo;
+                    video.Descricao = videoTemporario.Descricao;
+                    video.Curso = database.Curso.First(video => video.Id == videoTemporario.CursoID);
+                    database.Video.Add(video);
+                }
+                else
+                {
+                    Video videoDoBanco = database.Video.First(registro => registro.Id == videoTemporario.Id);
+
+                    videoDoBanco.Nome = videoTemporario.Nome;
+                    videoDoBanco.LinkVideo = videoTemporario.LinkVideo;
+                    videoDoBanco.Descricao = videoTemporario.Descricao;
+                }
+                database.SaveChanges();
+                return RedirectToAction("Index", "Curso");
             }
             else
             {
-                Video videoDoBanco = database.Video.First(registro => registro.Id == video.Id);
-
-                videoDoBanco.Nome = video.Nome;
-                videoDoBanco.LinkVideo = video.LinkVideo;
-                videoDoBanco.Descricao = video.Descricao;
-                videoDoBanco.Curso = curso;
+                ViewData["aux1"] = 0;
+                return View("../Video/CadastroVideo");
             }
-
-            database.SaveChanges();
-
-            return View("Index");
         }
 
         public IActionResult ExibirVideos()
@@ -73,13 +82,24 @@ namespace treino_mvc.Controllers
             return View();
         }
 
-        [HttpGet("Video/Editar/{id:int}")]
         public IActionResult Editar(int id)
         {
-            return Content("Editar, id" + id);
+            Video video = database.Video.First(registro => registro.Id == id);
+            Curso curso = database.Curso.First(curso => curso.Id == video.Curso.Id);
+            VideoDTO videoTemporario = new VideoDTO();
+
+            videoTemporario.Nome = video.Nome;
+            videoTemporario.LinkVideo = video.LinkVideo;
+            videoTemporario.Descricao = video.Descricao;
+            videoTemporario.CursoID = curso.Id;
+            videoTemporario.Id = id;
+
+            ViewData["idCursoVideo"] = id;
+            ViewData["aux1"] = id;
+
+            return View("CadastrarVideo", videoTemporario);
         }
 
-        [HttpGet("Video/Excluir/{id:int}")]
         public IActionResult Excluir(int id)
         {
             return Content("Excluir" + id);
