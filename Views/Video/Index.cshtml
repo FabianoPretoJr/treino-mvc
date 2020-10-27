@@ -1,6 +1,5 @@
 @model IEnumerable<treino_mvc.Models.Video>
 
-
 @{
     ViewData["Title"] = "Video";
 }
@@ -8,40 +7,22 @@
     <div class="col-md-2"></div>
     <div class="col-md-8"></div>
         <section>
-            <a href="/Video/CadastrarVideo" class="btn btn-primary">Cadastrar Novo Video</a>
+            <a href="/Video/CadastrarVideo/@ViewData["idCurso"]" class="btn btn-primary">Cadastrar Novo Video</a>
             <h2>Videos cadastrados</h2>
-            <div class="card-login">
-                <div>
-                    <p>Nome: Aula 1</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            @foreach (var listaDeVideosDeUmCurso in Model)
+            {
+                <div class="card-login">
+                    <div>
+                        <p>Nome: @listaDeVideosDeUmCurso.Nome</p>
+                        <p>Link: @listaDeVideosDeUmCurso.LinkVideo</p>
+                        <p>Descrição: @listaDeVideosDeUmCurso.Descricao</p>
+                    </div>
+                    <div>
+                        <a href="/Video/Excluir/@listaDeVideosDeUmCurso.Id" class="btn btn-danger">Excluir</a>
+                        <a href="/Video/Editar/@listaDeVideosDeUmCurso.Id" class="btn btn-primary">Editar</a>
+                    </div>
                 </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                </div>
-            </div>
-
-                        <div class="card-login">
-                <div>
-                    <p>Nome: aula 2</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                </div>
-            </div>
-
-                        <div class="card-login">
-                <div>
-                    <p>Nome: aula 3</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                </div>
-            </div>
+            }
         </section>
     </div>
     <div class="col-md-2"></div>

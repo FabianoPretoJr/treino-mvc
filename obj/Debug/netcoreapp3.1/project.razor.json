@@ -14412,6 +14412,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Curso\\ExibirCursos.cshtml",
+      "TargetPath": "Views\\Curso\\ExibirCursos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14444,6 +14449,11 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\treino-mvc\\Views\\Video\\ExibirVideos.cshtml",
+      "TargetPath": "Views\\Video\\ExibirVideos.cshtml",
       "FileKind": "mvc"
     },
     {

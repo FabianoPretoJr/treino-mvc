@@ -1,57 +1,23 @@
-﻿@{
+﻿@model IEnumerable<treino_mvc.Models.Curso>
+
+@{
     ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
     <p class="title-curso">Cursos para treinamento dos novos Starters</p>
     <div class="container-curso">
-        <div class="card-curso">
-            <strong>Curso:</strong>
-            <p class="nome-curso">Nome Curso</p>
-            <strong>Descrição:</strong>
-            <p class="descricao-curso">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <button class="button-curso" type="button">Fazer curso</button>
-        </div>
-        <div class="card-curso">
-            <strong>Curso:</strong>
-            <p class="nome-curso">Nome Curso</p>
-            <strong>Descrição:</strong>
-            <p class="descricao-curso">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <button class="button-curso" type="button">Fazer curso</button>
-        </div>
-        <div class="card-curso">
-            <strong>Curso:</strong>
-            <p class="nome-curso">Nome Curso</p>
-            <strong>Descrição:</strong>
-            <p class="descricao-curso">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <button class="button-curso" type="button">Fazer curso</button>
-        </div>
-        <div class="card-curso">
-            <strong>Curso:</strong>
-            <p class="nome-curso">Nome Curso</p>
-            <strong>Descrição:</strong>
-            <p class="descricao-curso">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <button class="button-curso" type="button">Fazer curso</button>
-        </div>
+        @foreach (var curso in Model)
+        {
+            <div class="card-curso">
+                <strong>Curso:</strong>
+                <p class="nome-curso">@curso.Nome</p>
+                <strong>Descrição:</strong>
+                <p class="descricao-curso">
+                    @curso.Descricao
+                </p>
+                <a href="/curso/exibircursos" class="button-curso" type="button">Fazer curso</a>
+            </div>
+        }
     </div>
 </div>

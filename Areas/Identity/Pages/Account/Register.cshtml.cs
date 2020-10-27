@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace treino_mvc.Areas.Identity.Pages.Account
 {
@@ -63,6 +64,7 @@ namespace treino_mvc.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            public string NivelUsuario { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -82,6 +84,10 @@ namespace treino_mvc.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddClaimAsync(user, new Claim("Nome", Input.Nome));
+                    // await _userManager.AddClaimAsync(user, new Claim("NivelUsuario", "Adm"));
+                    await _userManager.AddClaimAsync(user, new Claim("NivelUsuario", "Comum"));
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

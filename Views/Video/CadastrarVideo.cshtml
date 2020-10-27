@@ -10,7 +10,8 @@
         <section>
             <div class="card-login">
                 <form class="form-horizontal" asp-controller="Video" asp-action="Salvar" method="POST">
-                    <input type="hidden" asp-for="Id" />
+                    <input type="text" value="@ViewData["idCursoVideo"]"/>
+                    <input type="text" asp-for="Id"/> <!-- o Id está absorvendo o valor do idCursoVideo-->
                     <div class="form-group">
                         <strong>Nome do video</strong>
                         <input type="text" asp-for="Nome" class="form-control" />

@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using treino_mvc.Models;
+using treino_mvc.Data;
 
 namespace treino_mvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext database;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext database)
         {
-            _logger = logger;
+            this.database = database;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var curso = database.Curso.ToList();
+            return View(curso);
         }
 
 

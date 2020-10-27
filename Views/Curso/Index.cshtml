@@ -3,47 +3,28 @@
 @{
     ViewData["Title"] = "Curso";
 }
+
 <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-8"></div>
+    <div class="col-md-8">
         <section>
             <a href="/Curso/CadastrarCurso" class="btn btn-primary">Cadastrar Novo Curso</a>
             <h2>Cursos cadastrados</h2>
-            <div class="card-login">
-                <div>
-                    <p>Nome: Introdução ASPNET Core</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            @foreach (var curso in Model)
+            {
+                <div class="card-login">
+                    <div>
+                        <p>Nome: @curso.Nome</p>
+                        <p>Descrição: @curso.Descricao</p>
+                    </div>
+                    <div>
+                        <a href="/Curso/Excluir/@curso.Id" class="btn btn-danger">Excluir</a>
+                        <a href="/Curso/Editar/@curso.Id" class="btn btn-primary">Editar</a>
+                        <a href="/Video/@curso.Id" class="btn btn-success">Adicionar Video</a>
+                    </div>
                 </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                    <a href="/Video" class="btn btn-success">Adc Video</a>
-                </div>
-            </div>
-
-                        <div class="card-login">
-                <div>
-                    <p>Nome: Introdução ASPNET Core</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                    <a href="/Video" class="btn btn-success">Adc Video</a>
-                </div>
-            </div>
-
-                        <div class="card-login">
-                <div>
-                    <p>Nome: Introdução ASPNET Core</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Curso" class="btn btn-danger">Excluir</a>
-                    <a href="/Curso" class="btn btn-primary">Editar</a>
-                    <a href="/Video" class="btn btn-success">Adc Video</a>
-                </div>
-            </div>
+            }
         </section>
     </div>
     <div class="col-md-2"></div>
+</div>
