@@ -66,7 +66,7 @@ namespace treino_mvc.Controllers
             }
             else
             {
-                ViewData["aux"] = 0;
+                ViewData["aux"] = cursoTemporario.Id;
                 return View("../Curso/CadastrarCurso");
             }
         }

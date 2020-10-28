@@ -6,7 +6,12 @@ namespace treino_mvc.Models
 
         public string Nome { get; set; }
 
-        public string LinkVideo { get; set; }
+        private string linkVideo;
+        public string LinkVideo
+        {
+            get { return linkVideo; }
+            set { linkVideo = value.Replace("watch?v=", "embed/"); }
+        }
 
         public string Descricao { get; set; }
 

@@ -72,8 +72,9 @@ namespace treino_mvc.Controllers
             }
             else
             {
-                ViewData["aux1"] = 0;
-                return View("../Video/CadastroVideo");
+                ViewData["aux1"] = videoTemporario.Id;
+                ViewData["idCursoVideo"] = videoTemporario.CursoID;
+                return View("../Video/CadastrarVideo");
             }
         }
 
@@ -101,8 +102,8 @@ namespace treino_mvc.Controllers
             videoTemporario.Descricao = video.Descricao;
             videoTemporario.CursoID = video.Curso.Id;
 
-            ViewData["idCursoVideo"] = id;
-            ViewData["aux1"] = id;
+            ViewData["idCursoVideo"] = video.Curso.Id;
+            ViewData["aux1"] = video.Id;
 
             return View("CadastrarVideo", videoTemporario);
         }
