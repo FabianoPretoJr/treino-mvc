@@ -6,14 +6,16 @@
 
 <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-8"></div>
+    <div class="col-md-8">
         <section>
-            <p class="title-curso">@ViewData["Nome"]</p>
-            <div class="card-curso">
+            <br/>
+            <div>
                 <iframe width="800" height="500" src="@ViewData["Link"]"></iframe>
             </div>
+            <br/>
             <div>
-                <strong>Descrição</strong>
+                <h3>@ViewData["Nome"]</h3><br/>
+                <h4>Descrição</h4>
                 <p>@ViewData["Descricao"]</p>
             </div>
         </section>
