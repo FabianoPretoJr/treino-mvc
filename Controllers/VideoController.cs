@@ -89,17 +89,17 @@ namespace treino_mvc.Controllers
             return View();
         }
 
-        public IActionResult Editar(int id, int idCurso)
+        public IActionResult Editar(int id)
         {
-            Video video = database.Video.First(v => v.Id == id);
-            Curso curso = database.Curso.First(c => c.Id == idCurso);
+            Video video = database.Video.Include(v => v.Curso).First(v => v.Id == id);
+
             VideoDTO videoTemporario = new VideoDTO();
 
-            videoTemporario.Id = id;
+            videoTemporario.Id = video.Id;
             videoTemporario.Nome = video.Nome;
             videoTemporario.LinkVideo = video.LinkVideo;
             videoTemporario.Descricao = video.Descricao;
-            videoTemporario.CursoID = curso.Id;
+            videoTemporario.CursoID = video.Curso.Id;
 
             ViewData["idCursoVideo"] = id;
             ViewData["aux1"] = id;
