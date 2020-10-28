@@ -10,6 +10,7 @@ using treino_mvc.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using treino_mvc.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace treino_mvc.Controllers
 {
@@ -70,9 +71,12 @@ namespace treino_mvc.Controllers
             }
         }
 
-        public IActionResult ExibirCursos()
+        [HttpGet("Curso/ExibirCursos/{id:int}")]
+        public IActionResult ExibirCursos(int id)
         {
-            return View();
+            var listaDeVideosDeUmCurso = database.Video.Include(v => v.Curso).Where(v => v.Curso.Id == id).ToList();
+
+            return View(listaDeVideosDeUmCurso);
         }
 
         public IActionResult Editar(int id)

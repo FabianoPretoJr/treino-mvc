@@ -8,36 +8,19 @@
     <div class="col-md-2"></div>
     <div class="col-md-8"></div>
         <section>
-            <h2>Nome do Curso</h2>
-            <div class="card-login">
-                <div>
-                    <p>Nome: Aula 1</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2>Nome do Curso</h2>
+            @foreach (var listaDeVideosDeUmCurso in Model)
+            {
+                <div class="card-login">
+                    <div>
+                        <p>Nome: @listaDeVideosDeUmCurso.Nome</p>
+                        <p>Descrição: @listaDeVideosDeUmCurso.Descricao</p>
+                    </div>
+                    <div>
+                        <a href="/Video/ExibirVideos/@listaDeVideosDeUmCurso.Id" class="btn btn-danger">Assistir</a>
+                    </div>
                 </div>
-                <div>
-                    <a href="/Video/ExibirVideos" class="btn btn-danger">Assistir</a>
-                </div>
-            </div>
-
-            <div class="card-login">
-                <div>
-                    <p>Nome: aula 2</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Video/ExibirVideos" class="btn btn-danger">Assistir</a>
-                </div>
-            </div>
-
-            <div class="card-login">
-                <div>
-                    <p>Nome: aula 3</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <a href="/Video/ExibirVideos" class="btn btn-danger">Assistir</a>
-                </div>
-            </div>
+            }
         </section>
     </div>
     <div class="col-md-2"></div>

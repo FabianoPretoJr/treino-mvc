@@ -1,20 +1,20 @@
-@model IEnumerable<treino_mvc.Models.Video>
-
+@model treino_mvc.Models.Video
 
 @{
     ViewData["Title"] = "Video";
 }
+
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8"></div>
         <section>
-            <p class="title-curso" >Nome do Video</p>
+            <p class="title-curso">@ViewData["Nome"]</p>
             <div class="card-curso">
-                <iframe width="800" height="500" src="https://www.youtube.com/embed/qWDrDOyiLe8"></iframe>
+                <iframe width="800" height="500" src="@ViewData["Link"]"></iframe>
             </div>
             <div>
                 <strong>Descrição</strong>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>@ViewData["Descricao"]</p>
             </div>
         </section>
     </div>

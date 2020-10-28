@@ -77,22 +77,29 @@ namespace treino_mvc.Controllers
             }
         }
 
-        public IActionResult ExibirVideos()
+        [HttpGet("Video/ExibirVideos/{id:int}")]
+        public IActionResult ExibirVideos(int id)
         {
+            Video video = database.Video.First(video => video.Id == id);
+
+            ViewData["Nome"] = video.Nome;
+            ViewData["Link"] = video.LinkVideo;
+            ViewData["Descricao"] = video.Descricao;
+
             return View();
         }
 
-        public IActionResult Editar(int id)
+        public IActionResult Editar(int id, int idCurso)
         {
-            Video video = database.Video.First(registro => registro.Id == id);
-            Curso curso = database.Curso.First(curso => curso.Id == video.Curso.Id);
+            Video video = database.Video.First(v => v.Id == id);
+            Curso curso = database.Curso.First(c => c.Id == idCurso);
             VideoDTO videoTemporario = new VideoDTO();
 
+            videoTemporario.Id = id;
             videoTemporario.Nome = video.Nome;
             videoTemporario.LinkVideo = video.LinkVideo;
             videoTemporario.Descricao = video.Descricao;
             videoTemporario.CursoID = curso.Id;
-            videoTemporario.Id = id;
 
             ViewData["idCursoVideo"] = id;
             ViewData["aux1"] = id;
@@ -102,7 +109,11 @@ namespace treino_mvc.Controllers
 
         public IActionResult Excluir(int id)
         {
-            return Content("Excluir" + id);
+            Video video = database.Video.First(video => video.Id == id);
+            database.Video.Remove(video);
+            database.SaveChanges();
+
+            return RedirectToAction("Index", "Curso");
         }
     }
 }

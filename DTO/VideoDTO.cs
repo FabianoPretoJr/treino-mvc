@@ -11,7 +11,13 @@ namespace treino_mvc.DTO
         public string Nome { get; set; }
 
         [Required(ErrorMessage="Link do video é obrigátorio!")]
-        public string LinkVideo { get; set; }
+        private string linkVideo;
+        public string LinkVideo
+        {
+            get { return linkVideo; }
+            set { linkVideo = value.Replace("watch?v=", "embed/"); }
+        }
+        
 
         [Required(ErrorMessage="Descrição do video é obrigátorio!")]
         public string Descricao { get; set; }
