@@ -42,11 +42,11 @@ namespace treino_mvc.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage="Necessário digitar o seu e-mail para entrar!")]
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage="Necessário digitar a sua senha para entrar!")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

@@ -175,3 +175,6 @@ C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\R
 C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Views\Video\CadastrarVideo.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Views\Curso\ExibirCursos.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Views\Video\ExibirVideos.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\treino-mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs

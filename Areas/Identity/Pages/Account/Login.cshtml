@@ -10,7 +10,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <section>
-            <h4>Acessar área de cursos</h4>
+            <h4>Acessar área de cursos</h4><br/><br/>
             <div class="card-login">
                 <form id="account" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -24,26 +24,20 @@
                         <input asp-for="Input.Password" class="form-control" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
-                    @* <div class="form-group">
-                        <div class="checkbox">
-                            <label asp-for="Input.RememberMe">
-                                <input asp-for="Input.RememberMe" />
-                                    Lembre de mim
-                            </label>
-                        </div>
-                    </div> *@
+                    <br/>
                     <div class="form-group">
                         <button type="submit" class="button-curso">Acessar</button>
                     </div>
+                    <br/>
                     <div class="form-group">
                         <p>
                             Não possui login?
                             <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"> Cadastre-se!</a>
                         </p>
-                        <p>
+                        @* <p>
                             Esqueceu a sua senha?
                             <a id="forgot-password" asp-page="./ForgotPassword"> A gente faz outra!</a>
-                        </p>
+                        </p> *@
                     </div>
                 </form>
             </div>
