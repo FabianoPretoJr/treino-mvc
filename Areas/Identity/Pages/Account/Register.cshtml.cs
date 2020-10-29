@@ -86,7 +86,9 @@ namespace treino_mvc.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     await _userManager.AddClaimAsync(user, new Claim("Nome", Input.Nome));
-                    // await _userManager.AddClaimAsync(user, new Claim("NivelUsuario", "Adm"));
+
+                    // ABAIXO LINHA DE COMANDO QUE CRIA USUÁRIO COM NÍVEL ADMINISTRATIVO, QUANDO DESCOMENTA-LA, COMENTE A DE CIMA PARA NÃO HAVER FALHAS!!!
+                    // await _userManager.AddClaimAsync(user, new Claim("NivelUsuario", "Adm")); 
                     await _userManager.AddClaimAsync(user, new Claim("NivelUsuario", "Comum"));
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
