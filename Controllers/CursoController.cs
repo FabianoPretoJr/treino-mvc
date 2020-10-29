@@ -95,9 +95,19 @@ namespace treino_mvc.Controllers
 
         public IActionResult Excluir(int id)
         {
-            Curso curso = database.Curso.First(registro => registro.Id == id);
-            database.Curso.Remove(curso);
-            database.SaveChanges();
+            var cont = database.Video.Include(v => v.Curso).Where(v => v.Curso.Id == id).ToList();
+
+            if (cont.Any())
+            {
+                TempData["mensagemErro"] = "Não é possível excluir um curso que tenha aulas gravadas no banco, exclua antes as suas aulas!!!";
+            }
+            else
+            {
+                Curso curso = database.Curso.First(registro => registro.Id == id);
+                database.Curso.Remove(curso);
+                database.SaveChanges();
+            }     
+
             return RedirectToAction("Index");
         }
     }

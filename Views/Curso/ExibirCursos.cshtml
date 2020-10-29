@@ -6,21 +6,22 @@
 }
 <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-8"></div>
+    <div class="col-md-8">
         <section>
-        <h2>Nome do Curso</h2>
-            @foreach (var listaDeVideosDeUmCurso in Model)
-            {
-                <div class="card-login">
-                    <div>
-                        <p>Nome: @listaDeVideosDeUmCurso.Nome</p>
-                        <p>Descrição: @listaDeVideosDeUmCurso.Descricao</p>
-                    </div>
-                    <div>
-                        <a href="/Video/ExibirVideos/@listaDeVideosDeUmCurso.Id" class="btn btn-danger">Assistir</a>
-                    </div>
-                </div>
-            }
+            <br/>
+            <h2>Nome do Curso</h2><br/><br/>
+                @foreach (var listaDeVideosDeUmCurso in Model)
+                {
+                    <div class="card-login">
+                        <div>
+                            <p>Nome: @listaDeVideosDeUmCurso.Nome</p>
+                            <p>Descrição: @listaDeVideosDeUmCurso.Descricao</p>
+                        </div>
+                        <div>
+                            <a href="/Video/ExibirVideos/@listaDeVideosDeUmCurso.Id" class="btn btn-danger">Assistir</a>
+                        </div>
+                    </div><br/>
+                }
         </section>
     </div>
     <div class="col-md-2"></div>

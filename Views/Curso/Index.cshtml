@@ -4,6 +4,13 @@
     ViewData["Title"] = "Curso";
 }
 
+@if(TempData["mensagemErro"] != null)
+{
+    <div class="erro-delete">
+    @TempData["mensagemErro"]
+    </div>
+}
+
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
